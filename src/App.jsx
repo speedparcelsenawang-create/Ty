@@ -67,8 +67,40 @@ export default function App() {
     const header = renderHeader();
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', minHeight: '100vh', background: darkMode ? '#1e1e1e' : '#f8f9fa' }}>
-            <div style={{ display: 'flex', maxWidth: '1400px', width: '100%', position: 'relative' }}>
+        <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            minHeight: '100vh', 
+            background: darkMode 
+                ? 'linear-gradient(135deg, #050d17 0%, #081524 50%, #0a1929 100%)' 
+                : 'linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 50%, #80deea 100%)',
+            position: 'relative',
+            overflow: 'hidden'
+        }}>
+            {/* Ocean wave effect */}
+            {darkMode && (
+                <>
+                    <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '100%',
+                        background: 'radial-gradient(ellipse at 20% 30%, rgba(13, 71, 161, 0.3) 0%, transparent 50%)',
+                        pointerEvents: 'none'
+                    }} />
+                    <div style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: '100%',
+                        background: 'radial-gradient(ellipse at 80% 70%, rgba(1, 87, 155, 0.3) 0%, transparent 50%)',
+                        pointerEvents: 'none'
+                    }} />
+                </>
+            )}
+            <div style={{ display: 'flex', maxWidth: '1400px', width: '100%', position: 'relative', zIndex: 1 }}>
             <Sidebar 
                 visible={visibleLeft} 
                 onHide={() => setVisibleLeft(false)}
@@ -78,9 +110,13 @@ export default function App() {
                 style={{ 
                     width: '220px',
                     background: darkMode 
-                        ? 'linear-gradient(180deg, #434343 0%, #000000 100%)'
-                        : 'linear-gradient(180deg, #667eea 0%, #764ba2 100%)',
-                    borderRight: 'none'
+                        ? 'linear-gradient(180deg, #051e34 0%, #032338 50%, #001a2e 100%)'
+                        : 'linear-gradient(180deg, #4dd0e1 0%, #26c6da 50%, #00acc1 100%)',
+                    borderRight: 'none',
+                    boxShadow: darkMode 
+                        ? '4px 0 8px rgba(0, 0, 0, 0.2)'
+                        : '4px 0 6px rgba(0, 188, 212, 0.1)',
+                    backdropFilter: 'blur(10px)'
                 }}
             >
                 <div style={{ padding: '1rem 0', height: '100%', display: 'flex', flexDirection: 'column' }}>
